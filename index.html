@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakshi Garg - Portfolio</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .introduction, .projects, .contact {
+            margin-bottom: 30px;
+        }
+
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 15px 0;
+            padding: 10px;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input:invalid, textarea:invalid {
+            border: 2px solid #ff0000;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sakshi Garg</h1>
+        <nav>
+            <a href="#introduction">Introduction</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="introduction" class="introduction">
+        <h2>Introduction</h2>
+        <p> I am Sakshi Garg, a student of Post Graduate Diploma in Cyber Security and Law at Shaheed Sukhdev College, Delhi</p>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+
+        <div class="project-card" style="border: 2px solid #000; padding: 10px; font-family: 'Times New Roman', serif;">
+            <img src="1.png" alt="Project 1">
+            <h3>Food Delivery</h3>
+            <p>Experience the ultimate convenience of dining at home with our cutting-edge food delivery app. Browse a diverse array of restaurants, explore delectable menus, and enjoy swift, contactless delivery right to your doorstep. Whether you crave gourmet cuisine, local favorites, or international delights, our app ensures a seamless and satisfying culinary experience, bringing the flavors of your choice to you with just a few taps. 
+                Elevate your dining experience effortlessly with our user-friendly interface,
+                 exclusive deals, and timely delivery service.
+            </p>
+        </div>
+        <div class="project-card" style="border: 2px solid #000; padding: 10px; font-family: 'Times New Roman', serif;">
+            <img src="2.png" alt="Project 2">
+            <h3>Stay organised with TODO</h3>
+            <p>Stay organized and boost productivity with our intuitive todo app. Effortlessly manage tasks, set priorities, and track your progress in one streamlined interface. With user-friendly features and customizable options, tackling your to-do list has never been easier. Stay on top of your commitments, achieve your goals,
+                and enjoy a more organized and efficient lifestyle with our simple and powerful todo app.</p>
+        </div>
+        
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required minlength="3">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required minlength="10"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <script>
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+                var nameInput = document.getElementById("name");
+                var emailInput = document.getElementById("email");
+                var messageInput = document.getElementById("message");
+
+                if (nameInput.validity.valueMissing || nameInput.value.length < 3) {
+                    nameInput.setCustomValidity("Name should be at least 3 characters");
+                    event.preventDefault();
+                } else {
+                    nameInput.setCustomValidity("");
+                }
+
+                if (emailInput.validity.valueMissing || !isValidEmail(emailInput.value)) {
+                    emailInput.setCustomValidity("Please enter a valid email address");
+                    event.preventDefault();
+                } else {
+                    emailInput.setCustomValidity("");
+                }
+
+                if (messageInput.validity.valueMissing || messageInput.value.length < 10) {
+                    messageInput.setCustomValidity("Message should be at least 10 characters");
+                    event.preventDefault();
+                } else {
+                    messageInput.setCustomValidity("");
+                }
+            });
+
+            function isValidEmail(email) {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        </script>
+    </section>
+
+</body>
+</html>
